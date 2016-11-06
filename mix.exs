@@ -32,7 +32,8 @@ defmodule RomanNumerals.Mixfile do
   defp deps do
     [
       {:credo, "~> 0.4", only: [:dev, :test]},
-      {:excoveralls, "~> 0.5", only: :test}
+      {:excoveralls, "~> 0.5", only: :test},
+      {:inch_ex, "~> 0.5", only: :docs}
     ]
   end
 end

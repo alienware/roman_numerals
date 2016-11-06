@@ -1,6 +1,8 @@
 # RomanNumerals
 
-**TODO: Add description**
+[![Build Status](https://travis-ci.org/alienware/roman_numerals.svg?branch=master)](https://travis-ci.org/alienware/roman_numerals)
+[![Coverage Status](https://coveralls.io/repos/github/alienware/roman_numerals/badge.svg?branch=master)](https://coveralls.io/github/alienware/roman_numerals?branch=master)
+[![Inline docs](http://inch-ci.org/github/alienware/roman_numerals.svg)](http://inch-ci.org/github/alienware/roman_numerals)
 
 ## Installation
 
