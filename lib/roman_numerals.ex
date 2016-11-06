@@ -4,6 +4,17 @@ defmodule RomanNumerals do
   Roman numeral
   """
 
+  @doc """
+  Creates Roman equivalent of given `arabic`
+
+  Returns `String`.
+
+  ## Examples
+
+      iex> RomanNumerals.coverts(1786)
+      "MDCCLXXXVI"
+
+  """
   def convert(arabic) when arabic < 1 do
     ""
   end
