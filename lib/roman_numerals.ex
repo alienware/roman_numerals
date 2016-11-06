@@ -38,6 +38,6 @@ defmodule RomanNumerals do
   end
 
   def convert(arabic) do
-    convert(arabic-1) <> convert(1)
+    convert(arabic - 1) <> convert(1)
   end
 end
