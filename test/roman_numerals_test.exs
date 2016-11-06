@@ -2,7 +2,7 @@ defmodule RomanNumeralsTest do
   use ExUnit.Case
   doctest RomanNumerals
 
-  arabic_tests = [
+  @arabic_tests [
     {0, ""},
     {-1, ""},
     {1, "I"},
@@ -35,7 +35,19 @@ defmodule RomanNumeralsTest do
     {28, "XXVIII"},
     {29, "XXIX"},
     {30, "XXX"},
+    {40, "XL"},
+    {49, "XLIX"},
+    {50, "L"},
+    {88, "LXXXVIII"},
+    {89, "LXXXIX"},
+    {90, "XC"},
+    {99, "XCIX"},
+    {100, "C"},
   ]
 
-  Enum.each arabic_tests, fn({arabic, roman}) -> assert roman == RomanNumerals.convert(arabic) end
+  Enum.each @arabic_tests, fn({arabic, roman}) ->
+    test "convert #{arabic} into #{roman}" do
+      assert unquote(roman) == RomanNumerals.convert(unquote(arabic))
+    end
+  end
 end

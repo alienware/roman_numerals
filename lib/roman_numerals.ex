@@ -4,6 +4,13 @@ defmodule RomanNumerals do
   Roman numeral
   """
 
+  @arabic_bases [1, 5, 10]
+  @arabic_romans [
+    {1, "I"},
+    {5, "V"},
+    {10, "X"},
+  ]
+
   @doc """
   Creates Roman equivalent of given `arabic`
 
@@ -15,14 +22,6 @@ defmodule RomanNumerals do
       "MDCCLXXXVI"
 
   """
-  @arabic_bases [1, 5, 10]
-
-  @arabic_romans [
-    {1, "I"},
-    {5, "V"},
-    {10, "X"},
-  ]
-
   def convert(arabic) when arabic < 1 do
     ""
   end
