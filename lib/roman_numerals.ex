@@ -11,7 +11,7 @@ defmodule RomanNumerals do
 
   ## Examples
 
-      iex> RomanNumerals.coverts(1786)
+      iex> RomanNumerals.convert(1786)
       "MDCCLXXXVI"
 
   """
