@@ -4,11 +4,13 @@ defmodule RomanNumerals do
   Roman numeral
   """
 
-  @arabic_bases [1, 5, 10]
+  @arabic_bases [1, 5, 10, 50, 100]
   @arabic_romans [
     {1, "I"},
     {5, "V"},
     {10, "X"},
+    {50, "L"},
+    {100, "C"},
   ]
 
   @doc """
@@ -34,12 +36,15 @@ defmodule RomanNumerals do
     roman_base
   end
 
-  def convert(arabic) when rem(arabic, 10) == 0  do
-    convert(10) <> convert(arabic - 10)
+  def convert(arabic) when rem(arabic, 50) == 40 do
+    convert(10) <> convert(arabic + 10)
   end
 
-  def convert(arabic) when rem(arabic, 5) == 0 do
-    convert(arabic - 5) <> convert(5)
+  def convert(arabic) when arabic > 10 do
+    unit_remainder = rem(arabic, 10)
+    times_50 = div(arabic, 50)
+    times_10 = div(arabic - 50 * times_50, 10)
+    String.duplicate(convert(50), times_50) <> String.duplicate(convert(10), times_10) <> convert(unit_remainder)
   end
 
   def convert(arabic) when rem(arabic, 5) == 4 do
