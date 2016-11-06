@@ -36,14 +36,17 @@ defmodule RomanNumeralsTest do
     {29, "XXIX"},
     {30, "XXX"},
     {40, "XL"},
+    {41, "XLI"},
     {49, "XLIX"},
     {50, "L"},
+    {51, "LI"},
     {88, "LXXXVIII"},
     {89, "LXXXIX"},
     {90, "XC"},
     {98, "XCVIII"},
     {99, "XCIX"},
     {100, "C"},
+    {150, "CL"},
   ]
 
   Enum.each @arabic_tests, fn({arabic, roman}) ->

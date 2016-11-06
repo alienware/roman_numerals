@@ -36,8 +36,15 @@ defmodule RomanNumerals do
     roman_base
   end
 
-  def convert(arabic) when rem(arabic, 50) == 40 do
-    convert(10) <> convert(arabic + 10)
+  def convert(arabic) when rem(arabic, 50) >= 40 do
+    case div(arabic, 50) do
+      0 ->
+        convert(10) <> convert(arabic + 10)
+      1 ->
+        convert(10) <> convert(100) <> convert(arabic - 90)
+      _ ->
+        IO.puts "I only understand Arabic numerals till 100 :'("
+    end
   end
 
   def convert(arabic) when arabic > 10 do
