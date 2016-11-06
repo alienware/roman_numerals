@@ -46,6 +46,7 @@ defmodule RomanNumeralsTest do
     {98, "XCVIII"},
     {99, "XCIX"},
     {100, "C"},
+    {101, "CI"},
     {150, "CL"},
   ]
 

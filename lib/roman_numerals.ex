@@ -4,13 +4,15 @@ defmodule RomanNumerals do
   Roman numeral
   """
 
-  @arabic_bases [1, 5, 10, 50, 100]
+  @arabic_bases [1, 5, 10, 50, 100, 500, 1000]
   @arabic_romans [
     {1, "I"},
     {5, "V"},
     {10, "X"},
     {50, "L"},
     {100, "C"},
+    {500, "D"},
+    {1000, "M"},
   ]
 
   @doc """
@@ -42,16 +44,17 @@ defmodule RomanNumerals do
         convert(10) <> convert(arabic + 10)
       1 ->
         convert(10) <> convert(100) <> convert(arabic - 90)
-      _ ->
-        IO.puts "I only understand Arabic numerals till 100 :'("
     end
   end
 
   def convert(arabic) when arabic > 10 do
-    unit_remainder = rem(arabic, 10)
-    times_50 = div(arabic, 50)
-    times_10 = div(arabic - 50 * times_50, 10)
-    String.duplicate(convert(50), times_50) <> String.duplicate(convert(10), times_10) <> convert(unit_remainder)
+    remainder_unit = rem(arabic, 10)
+    {times_1000, remainder_1000} = {div(arabic, 1000), rem(arabic, 1000)}
+    {times_500, remainder_500} = {div(remainder_1000, 500), rem(remainder_1000, 500)}
+    {times_100, remainder_100} = {div(remainder_500, 100), rem(remainder_500, 100)}
+    {times_50, remainder_50} = {div(remainder_100, 50), rem(remainder_100, 50)}
+    times_10 = div(remainder_50, 10)
+    String.duplicate(convert(1000), times_1000) <> String.duplicate(convert(500), times_500) <> String.duplicate(convert(100), times_100) <> String.duplicate(convert(50), times_50) <> String.duplicate(convert(10), times_10) <> convert(remainder_unit)
   end
 
   def convert(arabic) when rem(arabic, 5) == 4 do
