@@ -7,7 +7,10 @@ defmodule RomanNumerals.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: [coveralls: :test]
+   ]
   end
 
   # Configuration for the OTP application
@@ -28,7 +31,8 @@ defmodule RomanNumerals.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:credo, "~> 0.4", only: [:dev, :test]}
+      {:credo, "~> 0.4", only: [:dev, :test]},
+      {:excoveralls, "~> 0.5", only: :test}
     ]
   end
 end
