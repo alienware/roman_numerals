@@ -15,20 +15,24 @@ defmodule RomanNumerals do
       "MDCCLXXXVI"
 
   """
+  @arabic_bases [1, 5, 10]
+
+  @arabic_romans [
+    {1, "I"},
+    {5, "V"},
+    {10, "X"},
+  ]
+
   def convert(arabic) when arabic < 1 do
     ""
   end
 
-  def convert(arabic) when arabic == 1 do
-    "I"
-  end
-
-  def convert(arabic) when arabic == 5 do
-    "V"
-  end
-
-  def convert(arabic) when arabic == 10 do
-    "X"
+  def convert(arabic) when arabic in @arabic_bases do
+    {_, roman_base} = Enum.find(@arabic_romans,
+                                fn {arabic_base, _}
+                                  -> arabic_base == arabic
+                                end)
+    roman_base
   end
 
   def convert(arabic) when rem(arabic, 10) == 0  do
