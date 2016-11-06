@@ -50,20 +50,22 @@ defmodule RomanNumerals do
   def convert(arabic) when arabic > 10 do
     remainder_unit = rem(arabic, 10)
     {times_1000, remainder_1000} = {div(arabic, 1000), rem(arabic, 1000)}
-    {times_500, remainder_500} = {div(remainder_1000, 500), rem(remainder_1000, 500)}
-    {times_100, remainder_100} = {div(remainder_500, 100), rem(remainder_500, 100)}
-    {times_50, remainder_50} = {div(remainder_100, 50), rem(remainder_100, 50)}
+    {times_500, remainder_500} = {div(remainder_1000, 500),
+                                  rem(remainder_1000, 500)}
+    {times_100, remainder_100} = {div(remainder_500, 100),
+                                  rem(remainder_500, 100)}
+    {times_50, remainder_50} = {div(remainder_100, 50),
+                                rem(remainder_100, 50)}
     times_10 = div(remainder_50, 10)
-    String.duplicate(convert(1000), times_1000) <> String.duplicate(convert(500), times_500) <> String.duplicate(convert(100), times_100) <> String.duplicate(convert(50), times_50) <> String.duplicate(convert(10), times_10) <> convert(remainder_unit)
+    String.duplicate(convert(1000), times_1000) <>
+      String.duplicate(convert(500), times_500) <>
+      String.duplicate(convert(100), times_100) <>
+      String.duplicate(convert(50), times_50) <>
+      String.duplicate(convert(10), times_10) <> convert(remainder_unit)
   end
 
   def convert(arabic) when rem(arabic, 5) == 4 do
-    case div(arabic, 10) do
-       0 ->
-        convert(1) <> convert(arabic + 1)
-       _ ->
-        convert(10) <> convert(arabic - 10)
-    end
+    convert(1) <> convert(arabic + 1)
   end
 
   def convert(arabic) do
